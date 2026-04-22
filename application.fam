@@ -1,0 +1,12 @@
+App(
+    appid="knitcount",
+    name="KnitCount",
+    apptype=FlipperAppType.EXTERNAL,
+    entry_point="knitcount_app",
+    cdefines=["APP_KNITCOUNT"],
+    requires=["gui", "storage"],
+    stack_size=2 * 1024,
+    order=10,
+    fap_category="Tools",
+    targets=["f7"],
+)
