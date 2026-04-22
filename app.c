@@ -333,7 +333,8 @@ static void knitcount_show_dialog(KnitCountApp* app, KnitDialogMode mode) {
     app->dialog_mode = mode;
 
     dialog_ex_reset(app->dialog);
-    dialog_ex_set_result_callback(app->dialog, dialog_result_cb, app);
+    dialog_ex_set_context(app->dialog, app);
+    dialog_ex_set_result_callback(app->dialog, dialog_result_cb);
 
     switch(mode) {
     case KnitDialogResetSub:
@@ -383,7 +384,6 @@ static KnitCountApp* knitcount_app_alloc(void) {
 
     /* ViewDispatcher */
     app->view_dispatcher = view_dispatcher_alloc();
-    view_dispatcher_enable_queue(app->view_dispatcher);
     view_dispatcher_set_event_callback_context(app->view_dispatcher, app);
     view_dispatcher_set_custom_event_callback(app->view_dispatcher, custom_event_callback);
     view_dispatcher_set_navigation_event_callback(app->view_dispatcher, navigation_callback);
